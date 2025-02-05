@@ -1,31 +1,84 @@
-import { StyleSheet } from 'react-native';
+import React, { useEffect, useState } from "react";
+import { View, Text, FlatList, Image, StyleSheet } from "react-native";
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+interface Recipe {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+}
 
-export default function TabOneScreen() {
+const HomeScreen: React.FC = () => {
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
+
+  useEffect(() => {
+    const fetchRecipes = async () => {
+      try {
+        const response = await fetch("https://dummyjson.com/recipes");
+        const data = await response.json();
+        if (data.recipes) {
+          setRecipes(data.recipes);
+        }
+      } catch (error) {
+        console.error("Error fetching recipes:", error);
+      }
+    };
+
+    fetchRecipes();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <Text style={styles.header}>Rekomen Resep Hari Ini</Text>
+      <FlatList
+        data={recipes}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Image source={{ uri: item.image }} style={styles.image} />
+            <View>
+              <Text style={styles.title}>{item.name}</Text>
+              <Text style={styles.description}>{item.description}</Text>
+            </View>
+          </View>
+        )}
+      />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 16,
+    backgroundColor: "#fff",
+  },
+  header: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  card: {
+    flexDirection: "row",
+    backgroundColor: "#f9f9f9",
+    padding: 10,
+    marginVertical: 5,
+    borderRadius: 8,
+  },
+  image: {
+    width: 80,
+    height: 80,
+    borderRadius: 8,
+    marginRight: 10,
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: "bold",
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  description: {
+    fontSize: 14,
+    color: "gray",
   },
 });
+
+export default HomeScreen;
