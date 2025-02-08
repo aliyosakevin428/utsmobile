@@ -36,7 +36,7 @@ const HomeScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Rekomen Resep Hari Ini</Text>
+      <Text style={styles.header}>Rekomen Resep Hari Ini . . .</Text>
       <FlatList
         data={recipes}
         keyExtractor={(item) => item.id.toString()}
@@ -66,6 +66,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 10,
+    margin: 1,
+    padding: 1,
   },
   card: {
     flexDirection: "row",
@@ -73,6 +75,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginVertical: 5,
     borderRadius: 8,
+    marginTop: 5,
   },
   image: {
     width: 80,

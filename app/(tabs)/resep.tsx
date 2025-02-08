@@ -33,9 +33,9 @@ const ResepScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Resep</Text>
+      <Text style={styles.header}>Search More Recipes . . .</Text>
 
-      {/* Search Bar */}
+      {/* Search Block */}
       <TextInput
         style={styles.searchBar}
         placeholder="Cari resep"
@@ -43,8 +43,7 @@ const ResepScreen: React.FC = () => {
         onChangeText={(text) => setSearch(text)}
       />
 
-
-      {/* List Resep */}
+      {/* List Recipes */}
       <FlatList
         data={filteredRecipes}
         keyExtractor={(item) => item.id.toString()}
@@ -69,6 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     backgroundColor: "#fff",
+    margin: 1,
   },
   header: {
     fontSize: 22,
