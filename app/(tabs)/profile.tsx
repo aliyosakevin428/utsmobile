@@ -37,8 +37,8 @@ const ProfileScreen = () => {
       <View style={styles.aboutSection}>
         <Text style={styles.aboutTitle}>Tentang aplikasi</Text>
         <Text style={styles.aboutText}>
-          Aplikasi ini dibuat sebagai syarat untuk menyelesaikan ujian UTS
-          mobile programming.
+          This App is made for Complete the Test for Mobile Programming
+          Development
         </Text>
       </View>
 

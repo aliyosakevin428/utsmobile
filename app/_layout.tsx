@@ -1,13 +1,14 @@
-import { View, Text } from "react-native";
-import React from "react";
-import { Stack } from "expo-router";
+import { SessionProvider } from "@/contexts/ctx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Slot } from "expo-router";
 
-const RootLayout = () => {
+export default function Root() {
+  // Set up the auth context and render our layout inside of it.
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="index" />
-    </Stack>
+    <QueryClientProvider client={new QueryClient()}>
+      <SessionProvider>
+        <Slot />
+      </SessionProvider>
+    </QueryClientProvider>
   );
-};
-
-export default RootLayout;
+}
