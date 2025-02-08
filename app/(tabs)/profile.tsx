@@ -1,3 +1,4 @@
+import { Octicons } from "@expo/vector-icons";
 import React from "react";
 import {
   View,
@@ -43,7 +44,8 @@ const ProfileScreen = () => {
       </View>
 
       <TouchableOpacity style={styles.logoutButton}>
-        <Text style={styles.logoutText}>🚪 Keluar</Text>
+        <Text style={styles.logoutText}>Log Out</Text>
+        <Octicons name="sign-out" size={20} color="white" style="" />
       </TouchableOpacity>
     </View>
   );
@@ -110,7 +112,8 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     borderRadius: 8,
-    marginTop: 20,
+    marginTop: 21,
+    paddingBlock: 15,
   },
   logoutText: {
     fontSize: 16,

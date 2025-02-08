@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, Image, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 
 interface Recipe {
   id: number;
@@ -34,13 +41,15 @@ const HomeScreen: React.FC = () => {
         data={recipes}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Image source={{ uri: item.image }} style={styles.image} />
-            <View>
-              <Text style={styles.title}>{item.name}</Text>
-              <Text style={styles.description}>{item.description}</Text>
+          <TouchableOpacity >
+            <View style={styles.card}>
+              <Image source={{ uri: item.image }} style={styles.image} />
+              <View>
+                <Text style={styles.title}>{item.name}</Text>
+                <Text style={styles.description}>{item.description}</Text>
+              </View>
             </View>
-          </View>
+          </TouchableOpacity>
         )}
       />
     </View>

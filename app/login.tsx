@@ -3,7 +3,7 @@ import { View, Button } from "react-native";
 import { useMutation } from "@tanstack/react-query";
 import { useSession } from "@/contexts/ctx";
 
-const SignInScreen: React.FC = () => {
+const LoginScreen: React.FC = () => {
   const { signIn } = useSession();
   const [email, setEmail] = useState("alyosa.kevin@gmail.com");
   const [password, setPassword] = useState("qwerty123");
@@ -33,4 +33,4 @@ const SignInScreen: React.FC = () => {
   );
 };
 
-export default SignInScreen;
+export default LoginScreen;
