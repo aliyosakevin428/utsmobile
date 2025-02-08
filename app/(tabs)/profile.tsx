@@ -17,7 +17,13 @@ const ProfileScreen = () => {
         style={styles.profileImage}
       />
       <Text style={styles.name}>Aliyosa Kevin</Text>
-      <Text style={styles.email}>randomemma@gmail.com</Text>
+      <Text style={styles.email}>randomemma428@gmail.com</Text>
+
+      <View style={styles.description}>
+        <Text style={styles.descriptionText}>
+          Keep Your Account Safe and do Update Your Profile Password
+        </Text>
+      </View>
 
       <TextInput
         style={styles.input}
@@ -45,7 +51,6 @@ const ProfileScreen = () => {
 
       <TouchableOpacity style={styles.logoutButton}>
         <Text style={styles.logoutText}>Log Out</Text>
-        <Octicons name="sign-out" size={20} color="white" style="" />
       </TouchableOpacity>
     </View>
   );
@@ -64,12 +69,24 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginBottom: 10,
   },
+  description: {
+    fontSize: 13,
+    color: "black",
+    marginBottom: 15,
+    padding: 0,
+    margin: 10,
+  },
+  descriptionText: {
+    alignContent: "center",
+    textAlign: "center",
+    padding: 0,
+  },
   name: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
   },
   email: {
-    fontSize: 14,
+    fontSize: 13,
     color: "gray",
     marginBottom: 20,
   },

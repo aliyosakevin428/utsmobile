@@ -24,7 +24,7 @@ const HomeScreen: React.FC = () => {
         const response = await fetch("https://dummyjson.com/recipes");
         const data = await response.json();
         if (data.recipes) {
-          setRecipes(data.recipes);
+          setRecipes(data.recipes.slice(6, 10));
         }
       } catch (error) {
         console.error("Error fetching recipes:", error);
@@ -41,7 +41,7 @@ const HomeScreen: React.FC = () => {
         data={recipes}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <TouchableOpacity >
+          <TouchableOpacity>
             <View style={styles.card}>
               <Image source={{ uri: item.image }} style={styles.image} />
               <View>

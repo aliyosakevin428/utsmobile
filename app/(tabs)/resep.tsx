@@ -43,6 +43,7 @@ const ResepScreen: React.FC = () => {
         onChangeText={(text) => setSearch(text)}
       />
 
+
       {/* List Resep */}
       <FlatList
         data={filteredRecipes}
@@ -50,7 +51,7 @@ const ResepScreen: React.FC = () => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.card}
-            onPress={() => alert(`Detail ${item.name}`)}>
+            onPress={() => alert(`Detail & Description ${item.name}`)}>
             <Image source={{ uri: item.image }} style={styles.image} />
             <View style={styles.textContainer}>
               <Text style={styles.title}>{item.name}</Text>
