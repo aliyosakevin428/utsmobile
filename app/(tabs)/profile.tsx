@@ -1,4 +1,6 @@
 import { Octicons } from "@expo/vector-icons";
+import { useMutation } from "@tanstack/react-query";
+import { useNavigation } from "expo-router";
 import React from "react";
 import {
   View,
@@ -10,20 +12,25 @@ import {
 } from "react-native";
 
 const ProfileScreen = () => {
+  const navigation = useNavigation();
+
+  const logoutMutation = useMutation({
+    mutationFn: async () => {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    },
+    onSuccess: () => {
+      navigation.navigate("login" as never);
+    },
+  });
+
   return (
     <View style={styles.container}>
       <Image
-        source={{ uri: "https://randomuser.me/api/portraits/men/10.jpg" }}
+        source={{ uri: "https://robohash.org/AliyosaKevin" }}
         style={styles.profileImage}
       />
       <Text style={styles.name}>Aliyosa Kevin</Text>
       <Text style={styles.email}>randomemma428@gmail.com</Text>
-
-      <View style={styles.description}>
-        <Text style={styles.descriptionText}>
-          Keep Your Account Safe and do Update Your Profile Password
-        </Text>
-      </View>
 
       <TextInput
         style={styles.input}
@@ -36,6 +43,9 @@ const ProfileScreen = () => {
         placeholder="Password"
         secureTextEntry={true}
       />
+      <View>
+        <Text style={styles.changePasswordText}>isi password jika ingin merubah password</Text>
+      </View>
 
       <TouchableOpacity style={styles.updateButton}>
         <Text style={styles.updateText}>✓ Update Profile</Text>
@@ -44,13 +54,18 @@ const ProfileScreen = () => {
       <View style={styles.aboutSection}>
         <Text style={styles.aboutTitle}>Tentang aplikasi</Text>
         <Text style={styles.aboutText}>
-          This App is made for Complete the Test for Mobile Programming
-          Development
+          Aplikasi ini dibuat sebagai syarat untuk mendapatkan nilai ujian
+          tengah semester matakulah mobile programming. aplikasi ini dibuat
+          dengan menggunakan react native expo
         </Text>
       </View>
 
-      <TouchableOpacity style={styles.logoutButton}>
-        <Text style={styles.logoutText}>Log Out</Text>
+      <TouchableOpacity
+        style={styles.logoutButton}
+        onPress={() => logoutMutation.mutate()}>
+        <Text style={styles.logoutText}>
+          {logoutMutation.isPending ? "Keluar..." : "Log Out"}
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -137,6 +152,13 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
   },
+  changePasswordText: {
+    paddingRight: 105,
+    fontSize: 14,
+    color: "gray",
+    marginTop: 5,
+    marginBottom: 15,
+  }
 });
 
 export default ProfileScreen;

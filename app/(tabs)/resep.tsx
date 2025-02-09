@@ -12,7 +12,7 @@ import {
 interface Resep {
   id: number;
   name: string;
-  description: string;
+  cuisine: string;
   image: string;
 }
 
@@ -54,7 +54,7 @@ const ResepScreen: React.FC = () => {
             <Image source={{ uri: item.image }} style={styles.image} />
             <View style={styles.textContainer}>
               <Text style={styles.title}>{item.name}</Text>
-              <Text style={styles.description}>{item.description}</Text>
+              <Text style={styles.description}>{item.cuisine}</Text>
             </View>
           </TouchableOpacity>
         )}
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   description: {
-    fontSize: 14,
+    fontSize: 15,
     color: "gray",
   },
 });
