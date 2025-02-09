@@ -23,7 +23,11 @@ export default function TabLayout() {
         options={{
           tabBarLabel: "Beranda",
           title: "Beranda",
-          tabBarIcon: ({ size, color }) => <House color={color} size={size} />,
+          tabBarIcon: ({ focused, size, color }) => (
+            <House color={focused ? "#FFA500" : "gray"} size={size} />
+          ),
+          tabBarActiveTintColor: "#FFA500", // Active text color
+          tabBarInactiveTintColor: "gray", // Inactive text color
         }}
       />
       <Tabs.Screen
@@ -31,7 +35,11 @@ export default function TabLayout() {
         options={{
           tabBarLabel: "Resep",
           title: "Resep",
-          tabBarIcon: ({ size, color }) => <Beef color={color} size={size} />,
+          tabBarIcon: ({ focused, size, color }) => (
+            <Beef color={focused ? "#FFA500" : "gray"} size={size} />
+          ),
+          tabBarActiveTintColor: "#FFA500", // Active text color
+          tabBarInactiveTintColor: "gray", // Inactive text color
         }}
       />
       <Tabs.Screen
@@ -39,7 +47,11 @@ export default function TabLayout() {
         options={{
           tabBarLabel: "Profile",
           title: "Profile",
-          tabBarIcon: ({ size, color }) => <User color={color} size={size} />,
+          tabBarIcon: ({ focused, size, color }) => (
+            <User color={focused ? "#FFA500" : "gray"} size={size} />
+          ),
+          tabBarActiveTintColor: "#FFA500", // Active text color
+          tabBarInactiveTintColor: "gray", // Inactive text color
         }}
       />
     </Tabs>
