@@ -1,9 +1,20 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { Octicons } from "@expo/vector-icons";
-import { Tabs } from "expo-router";
+import { Redirect, Tabs } from "expo-router";
+import { useSession } from "@/contexts/ctx";
 
-const TabLayout = () => {
+export default function TabLayout() {
+  const { session, isLoading } = useSession();
+
+  if (isLoading) {
+    return <Text>Loading . . .</Text>;
+  }
+
+  if (!session) {
+    return <Redirect href="/login" />;
+  }
+
   return (
     <Tabs>
       <Tabs.Screen
@@ -38,6 +49,4 @@ const TabLayout = () => {
       />
     </Tabs>
   );
-};
-
-export default TabLayout;
+}
