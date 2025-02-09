@@ -85,7 +85,7 @@ const LoginScreen: React.FC = () => {
             <ActivityIndicator color="#fff" />
           ) : (
             <Text style={styles.buttonText}>
-              <Check color={"white"} />
+              <Check color={"white"} /> 
               Login
             </Text>
           )}

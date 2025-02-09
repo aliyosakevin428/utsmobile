@@ -1,8 +1,9 @@
 import { View, Text } from "react-native";
 import React from "react";
-import { Octicons } from "@expo/vector-icons";
 import { Redirect, Tabs } from "expo-router";
 import { useSession } from "@/contexts/ctx";
+import { Beef, House, Icon, User } from "lucide-react-native";
+import { COLORS } from "@/constants/Colors";
 
 export default function TabLayout() {
   const { session, isLoading } = useSession();
@@ -22,9 +23,7 @@ export default function TabLayout() {
         options={{
           tabBarLabel: "Beranda",
           title: "Beranda",
-          tabBarIcon: ({ size, color }) => (
-            <Octicons name="home" size={size} color={color} />
-          ),
+          tabBarIcon: ({ size, color }) => <House color={color} size={size} />,
         }}
       />
       <Tabs.Screen
@@ -32,9 +31,7 @@ export default function TabLayout() {
         options={{
           tabBarLabel: "Resep",
           title: "Resep",
-          tabBarIcon: ({ size, color }) => (
-            <Octicons name="book" size={size} color={color} />
-          ),
+          tabBarIcon: ({ size, color }) => <Beef color={color} size={size} />,
         }}
       />
       <Tabs.Screen
@@ -42,9 +39,7 @@ export default function TabLayout() {
         options={{
           tabBarLabel: "Profile",
           title: "Profile",
-          tabBarIcon: ({ size, color }) => (
-            <Octicons name="person" size={size} color={color} />
-          ),
+          tabBarIcon: ({ size, color }) => <User color={color} size={size} />,
         }}
       />
     </Tabs>
