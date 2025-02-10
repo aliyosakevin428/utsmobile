@@ -3,7 +3,6 @@ import React from "react";
 import { Redirect, Tabs } from "expo-router";
 import { useSession } from "@/contexts/ctx";
 import { Beef, House, Icon, User } from "lucide-react-native";
-import { COLORS } from "@/constants/Colors";
 
 export default function TabLayout() {
   const { session, isLoading } = useSession();
@@ -23,7 +22,7 @@ export default function TabLayout() {
         options={{
           tabBarLabel: "Beranda",
           title: "Beranda",
-          tabBarIcon: ({ focused, size, color }) => (
+          tabBarIcon: ({ focused, size }) => (
             <House color={focused ? "#FFA500" : "gray"} size={size} />
           ),
           tabBarActiveTintColor: "#FFA500", // Active text color
@@ -35,7 +34,7 @@ export default function TabLayout() {
         options={{
           tabBarLabel: "Resep",
           title: "Resep",
-          tabBarIcon: ({ focused, size, color }) => (
+          tabBarIcon: ({ focused, size }) => (
             <Beef color={focused ? "#FFA500" : "gray"} size={size} />
           ),
           tabBarActiveTintColor: "#FFA500", // Active text color
@@ -47,7 +46,7 @@ export default function TabLayout() {
         options={{
           tabBarLabel: "Profile",
           title: "Profile",
-          tabBarIcon: ({ focused, size, color }) => (
+          tabBarIcon: ({ focused, size }) => (
             <User color={focused ? "#FFA500" : "gray"} size={size} />
           ),
           tabBarActiveTintColor: "#FFA500", // Active text color

@@ -21,9 +21,9 @@ const LoginScreen: React.FC = () => {
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
 
-  const { isPending } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: async () => {
-      const response = await fetch("", {
+      const response = await fetch("https://iqmn.my.id/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,8 +53,8 @@ const LoginScreen: React.FC = () => {
         <View>
           <Text style={styles.title}>Selamat Datang</Text>
           <Text style={styles.subtitle}>
-            Silahkan Masuk Mengginakan Email dan Password Yang Telah Terdaftar
-            dan Jangan Lupa Minum yang cukup Sobat .{" "}
+            Silakan login untuk masuk ke akun anda. Pastikan anda menggunakan
+            akun yang telah terdaftar.
           </Text>
         </View>
 
@@ -78,14 +78,14 @@ const LoginScreen: React.FC = () => {
           style={styles.button}
           onPress={() => {
             signIn();
-            router.push("/");
+            router.push("/")
           }}
           disabled={isPending}>
           {isPending ? (
             <ActivityIndicator color="#fff" />
           ) : (
             <Text style={styles.buttonText}>
-              <Check color={"white"} /> 
+              <Check color={"white"} />
               Login
             </Text>
           )}
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     gap: 25,
     top: 50,
   },
-  title: { fontSize: 24, fontWeight: "bold", color: "#212529" },
+  title: { fontSize: 24, fontWeight: "bold", fontFamily: "Geologica", color: "#212529" },
   input: {
     width: "100%",
     padding: 10,
@@ -125,9 +125,10 @@ const styles = StyleSheet.create({
   buttonText: { fontSize: 16, color: "#fff", fontWeight: "bold" },
   subtitle: {
     marginTop: 10,
-    color: "#b1b1b1`",
+    color: "#b1b1b1",
     fontWeight: "300",
     fontSize: 14,
+    
   },
   image: { width: 200, height: 200 },
 });

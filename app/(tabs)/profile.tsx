@@ -1,4 +1,3 @@
-import { Octicons } from "@expo/vector-icons";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigation } from "expo-router";
 import React from "react";

@@ -10,7 +10,7 @@ const AuthContext = createContext<{
   signIn: () => null,
   signOut: () => null,
   session: null,
-  isLoading: false,
+  isLoading: true,
 });
 
 export function useSession() {
