@@ -7,13 +7,13 @@ import { Beef, House, Icon, User } from "lucide-react-native";
 export default function TabLayout() {
   const { session, isLoading } = useSession();
 
-  // if (isLoading) {
-  //   return <Text>Loading . . .</Text>;
-  // }
+  if (isLoading) {
+    return <Text>Loading . . .</Text>;
+  }
 
-  // if (!session) {
-  //   return <Redirect href="/login" />;
-  // }
+  if (!session) {
+    return <Redirect href="/login" />;
+  }
 
   return (
     <Tabs>

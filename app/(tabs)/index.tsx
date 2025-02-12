@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import {
   View,
@@ -41,7 +42,13 @@ const HomeScreen: React.FC = () => {
         data={recipes}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              router.push({
+                pathname: "/resep/resepDetail",
+                params: { id: item.id.toString() },
+              })
+            }>
             <View style={styles.card}>
               <Image source={{ uri: item.image }} style={styles.image} />
               <View>
